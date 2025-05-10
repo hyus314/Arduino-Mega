@@ -12,13 +12,17 @@ LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 void setup() {
   lcd.begin(16, 2);
 
-  lcd.print("hello, world!");
+  lcd.print("Counter ");
 }
 
 void loop() {
 
   lcd.setCursor(0, 1);
   // print the number of seconds since reset:
-  lcd.print(millis() / 1000);
+  for (int i = 10; i >= 1; i--) {
+    lcd.print(i);
+    delay(1000);
+    lcd.clear();
+  }
 
 }
