@@ -1,5 +1,6 @@
 #include <LiquidCrystal.h>
 #include <IRremote.hpp>
+#include <dht.h>
 
 #define LCD_RS 12
 #define LCD_EN 11
@@ -8,6 +9,9 @@
 #define LCD_D6 3
 #define LCD_D7 2
 
+#define DHT_PIN 50
+
+dht DHT;
 LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 IRrecv IR(7);
 
@@ -55,6 +59,15 @@ void write_command (byte input_from_remote) {
   lcd.setCursor(0, 0);
   lcd.print("Input from remote was: ");
   lcd.setCursor(0, 1);
+  if (input_from_remote == 1) {
+    int chk = DHT.read11(DHT_PIN);
+    lcd.print("temp: ");
+    lcd.print(DHT.temperature);
+    
+  }
+  else if (input_from_remote == 2) {
+    lcd.print("humidity: ")
+  }
   if (input_from_remote == 0) {
     lcd.print("try again");
   } else {
