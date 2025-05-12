@@ -25,13 +25,21 @@ void setup() {
 }
 
 void loop() {
+  bool isCommandWritten = false;
   if (IR.decode()) {
-
+    lcd.clear();
+    lcd.print("decoded!");
+    delay(500);
     byte input_from_remote = decode_hex_code(IR.decodedIRData.decodedRawData);
+    if (input_from_remote == 0 && current_selection != 0) {
+      isCommandWritten = true;
+      write_command(current_selection);
+      return;
+    }
     write_command(input_from_remote);
     IR.resume();
   }
-  if (current_selection != 0) {
+  if (current_selection != 0 && isCommandWritten == false) {
     write_command(current_selection);
   }
 }
@@ -66,13 +74,15 @@ void write_command(byte input) {
   lcd.setCursor(0, 0);
   lcd.print("Input from remote was: ");
   lcd.setCursor(0, 1);
+  int chk = -1;
   if (input == 1) {
-    int chk = DHT.read11(DHT_PIN);
+    chk = DHT.read11(DHT_PIN);
     
     lcd.print("temp: ");
     lcd.print(DHT.temperature);
     delay(500);
   } else if (input == 2) {
+    chk = DHT.read11(DHT_PIN);
     
     lcd.print("humidity: ");
     lcd.print(DHT.humidity);
