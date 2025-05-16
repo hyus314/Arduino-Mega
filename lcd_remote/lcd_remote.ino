@@ -18,14 +18,14 @@ IRrecv IR(7);
 void setup() {
   lcd.begin(16, 2);
   IR.enableIRIn();
-  
+
   lcd.print("Waiting for command");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   if (IR.decode()) {
-    
+
     byte input_from_remote = decode_hex_code(IR.decodedIRData.decodedRawData);
 
     write_command(input_from_remote);
@@ -54,19 +54,26 @@ byte decode_hex_code(unsigned long hexCode) {
   }
 }
 
-void write_command (byte input_from_remote) {
+void write_command(byte input_from_remote) {
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Input from remote was: ");
   lcd.setCursor(0, 1);
   if (input_from_remote == 1) {
     int chk = DHT.read11(DHT_PIN);
-    lcd.print("temp: ");
-    lcd.print(DHT.temperature);
-    
-  }
-  else if (input_from_remote == 2) {
-    lcd.print("humidity: ")
+    while (true) {
+
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Input from remote was: ");
+      lcd.setCursor(0, 1);
+      lcd.print("temp: ");
+      lcd.print(DHT.temperature);
+      delay(500);
+    }
+
+  } else if (input_from_remote == 2) {
+    lcd.print("humidity: ");
   }
   if (input_from_remote == 0) {
     lcd.print("try again");

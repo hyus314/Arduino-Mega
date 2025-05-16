@@ -94,7 +94,7 @@ void print_selection() {
     lcd.print("                "); 
     lcd.setCursor(0, 1);
     lcd.print("humidity: ");
-    lcd.print(DHT.humidity);
+    lcd.print(DHT.humidity); 
   }
 
   delay(500);
