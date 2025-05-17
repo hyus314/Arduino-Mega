@@ -6,3 +6,5 @@ This piece of code is intended to create an interconnection of couple of mini de
 * LCD display is presenting the values;
 
 ### Added membrane keypad mini-project
+
+soon to implement pin code ahthorization
