@@ -8,3 +8,4 @@ This piece of code is intended to create an interconnection of couple of mini de
 ### Added membrane keypad mini-project
 
 soon to implement pin code ahthorization
+TO DO: connect chip sensor and implement functionality for additional authorization
