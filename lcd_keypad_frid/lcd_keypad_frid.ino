@@ -2,6 +2,7 @@
 #include <dht.h>
 #include <Keypad.h>
 #include <string.h>
+#include <MFRC522.h>
 
 #define LCD_RS 12
 #define LCD_EN 11
