@@ -7,5 +7,5 @@ This piece of code is intended to create an interconnection of couple of mini de
 
 ### Added membrane keypad mini-project
 
-soon to implement pin code ahthorization
-TO DO: connect chip sensor and implement functionality for additional authorization
+soon to implement pin code ahthorization   
+RFID Chip connected, ready to establish interconnection with other components on the controller.
