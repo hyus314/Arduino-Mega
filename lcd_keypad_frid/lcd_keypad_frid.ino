@@ -32,6 +32,7 @@
 #define RFID_MISO 38
 #define RFID_RST 36
 
+MFRC522 mrfc522(RFID_RST, ...)
 
 char hexaKeys[ROWS][COLS] = {
   {'1', '2', '3', 'A'},
